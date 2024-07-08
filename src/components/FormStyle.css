@@ -1,0 +1,42 @@
+
+
+
+/* Login.css */
+
+.login {
+    background-image: url('./background1.png'); /* Adjust path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insidelogin{
+    position: relative;
+    right: 300px;
+    height: 400px;
+}
+
+
+
+/* Customize further as needed */
+
+
+/* Signup.css */
+
+.signup {
+    background-image: url('./background1.png'); /* Adjust path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.insideSignup{
+    position: relative;
+    right: 300px;
+    height: 450px;
+}
