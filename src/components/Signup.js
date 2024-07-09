@@ -47,7 +47,7 @@ export default function Signup() {
             </form>
             <div className="row mt-3">
                 <div className="col-12 d-flex justify-content-center">
-                    <label className="col-form-label me-2">Not a member?</label>
+                    <label className="col-form-label me-2">Already a member?</label>
                     <Link to="/" className=" mt-1">login Now</Link>
                 </div>
             </div>
