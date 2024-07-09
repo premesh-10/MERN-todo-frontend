@@ -12,7 +12,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://localhost:5000/", { email, password });
+            const res = await axios.post("https://mernbackendproject-5stk.onrender.com/", { email, password });
 
             if (res.data === "exist") {
                 navigate("/task", { state: { id: email } });
