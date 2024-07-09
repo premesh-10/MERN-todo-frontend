@@ -1,3 +1,6 @@
+#body{
+    overflow-x: hidden;
+}
 #form{
     width: 40%;
     padding: 10px;
@@ -27,14 +30,14 @@ table{
 .hover-data {
     
     position: absolute;
-    top: 100%; /* Position it just below the button */
-    left: 0;
-    right: 5px;
-    background-color: #fff; /* Background color for the hover data */
-    border: 1px solid #ccc; /* Border for the hover data */
-    padding: 10px; /* Padding for the hover data */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-    z-index: 1000; /*Ensure it is above other elements*/
-    width: max-content;
+     top: 100%; 
+    left: -30px;
+    right: 20px;
+     background-color: #fff; 
+     border: 1px solid #ccc; 
+     padding: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /*Optional shadow for better visibility*/
+    z-index: 1000;  /*Ensure it is above other elements*/
+    width: 450px;
   }
   

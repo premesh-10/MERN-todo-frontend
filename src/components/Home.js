@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import "./Home.css"
+import "./Home.css";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -9,14 +9,10 @@ const Home = () => {
   const [tasks, setTasks] = useState([]);
   const taskRef = useRef(null);
   const dateTimeRef = useRef(null);
-  //const timeRef = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
   const notificationTimeouts = useRef({});
   const [isHovered, setIsHovered] = useState(false);
-
-
-
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTasks();
@@ -30,7 +26,6 @@ const Home = () => {
   }, [location]);
 
   useEffect(() => {
-    // Clear previous timeouts
     Object.values(notificationTimeouts.current).forEach(clearTimeout);
     notificationTimeouts.current = {};
 
@@ -43,7 +38,7 @@ const Home = () => {
         const timeoutId = setTimeout(() => {
           document.getElementById("notificationSound").play();
           if (Notification.permission === "granted") {
-            new Notification(("Time for ") + task.task + (" Task"), {
+            new Notification(`Time for ${task.task} Task`, {
               requireInteraction: true,
             });
           } else {
@@ -55,7 +50,6 @@ const Home = () => {
       }
     });
 
-    // Cleanup timeouts on unmount
     return () => {
       Object.values(notificationTimeouts.current).forEach(clearTimeout);
     };
@@ -73,17 +67,14 @@ const Home = () => {
   const scheduleReminder = async () => {
     const title = taskRef.current.value;
     const dateTime = dateTimeRef.current.value;
-    //const time = timeRef.current.value;
-    //const dateTimeString = ${date} ${time};
 
     try {
       const response = await axios.post("https://mernbackendproject-5stk.onrender.com/tasks/create-task", {
         task: title,
         dateTime,
-        //dateTime:dateTimeString,
       });
       console.log("Task created:", response.data);
-      fetchTasks(); // Update tasks after creating a new one
+      fetchTasks(); 
     } catch (error) {
       console.error("Error creating task:", error);
     }
@@ -93,11 +84,10 @@ const Home = () => {
   const deleteTask = async (id) => {
     try {
       await axios.delete(`https://mernbackendproject-5stk.onrender.com/tasks/delete-task/${id}`);
-      fetchTasks(); // Update tasks after deleting one
+      fetchTasks(); 
     } catch (error) {
       console.error("Error deleting task:", error);
     }
-
   };
 
   const editTask = async (id) => {
@@ -105,8 +95,7 @@ const Home = () => {
       const response = await axios.get(`https://mernbackendproject-5stk.onrender.com/tasks/update-task/${id}`);
       const task = response.data;
       taskRef.current.value = task.task;
-      dateTimeRef.current.value = task.dateTime.split(" ")[0];
-      //timeRef.current.value = task.dateTime.split(" ")[1];
+      dateTimeRef.current.value = task.dateTime.split("T")[0];
       setEditingTask(task);
     } catch (error) {
       console.error("Error fetching task for edit:", error);
@@ -116,24 +105,19 @@ const Home = () => {
   const updateTask = async () => {
     const title = taskRef.current.value;
     const dateTime = dateTimeRef.current.value;
-    //const time = timeRef.current.value;
-    //const dateTimeString = ${date} ${time};
 
     try {
       await axios.put(`https://mernbackendproject-5stk.onrender.com/tasks/update-task/${editingTask._id}`, {
         task: title,
         dateTime,
       });
-      fetchTasks(); // Update tasks after updating one
+      fetchTasks();
       window.location.reload();
       setEditingTask(null);
     } catch (error) {
       console.error("Error updating task:", error);
     }
   };
-
-
-  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -143,39 +127,30 @@ const Home = () => {
     setIsHovered(false);
   };
 
-
-
-
   return (
-    <div className="container-fulid">
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <div class="container-fluid">
-          <span class="navbar-brand text-light" href="#">Welcome to To-do List Website</span>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <div className="container-fluid" id="body">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+        <div className="container-fluid">
+          <span className="navbar-brand text-light">Welcome to To-do List Website</span>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <button onClick={() => navigate("/task")} class="nav-link active" aria-current="page" href="#" id="topbtn">Home</button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <button onClick={() => navigate("/task")} className="nav-link active" aria-current="page" id="topbtn">Home</button>
               </li>
-              <li class="nav-item">
-                <button onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  className="nav-link"
-                  class="nav-link active" href="#" id="topbtn">About us</button>
+              <li className="nav-item">
+                <button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="nav-link active" id="topbtn">About us</button>
                 {isHovered && (
                   <div className="hover-data">
-                    <p style={{width:"20%"}}>Our To-Do List website allows users to manage tasks efficiently. Users can create, edit, and delete tasks, set reminders, and receive notifications for upcoming tasks. It's designed to help users stay organized and ensure they don't forget important activities. </p>
-
+                    <p>Our To-Do List website allows users to manage tasks efficiently. Users can create, edit, and delete tasks, set reminders, and receive notifications for upcoming tasks. It's designed to help users stay organized and ensure they don't forget important activities.</p>
                   </div>
                 )}
               </li>
-              <li class="nav-item">
-                <button onClick={() => navigate("/")} class="nav-link active" href="#" id="topbtn">Logout <img id="img" src="logout.png" alt=""></img></button>
-
+              <li className="nav-item">
+                <button onClick={() => navigate("/")} className="nav-link active" id="topbtn">Logout <img id="img" src="logout.png" alt="logout icon" /></button>
               </li>
-
             </ul>
           </div>
         </div>
@@ -184,18 +159,13 @@ const Home = () => {
         <div className="container" id="form">
           <label className="form-label" id="label">Task:</label>
           <input className="form-control mx-auto" type="text" ref={taskRef} id="input" />
-          {/*<label className="form-label" id="label">Date:</label>
-          <input className="form-control mx-auto" type="date" ref={dateRef} id="input" />*/}
           <label className="form-label" id="label">Date and Time:</label>
           <input className="form-control mx-auto" type="datetime-local" ref={dateTimeRef} id="input" />
-          <button type="button" className="btn btn-warning my-3 d-block mx-auto" onClick={scheduleReminder} id="schedulebutton">
-            Schedule Reminder
-          </button>
+          <button type="button" className="btn btn-warning my-3 d-block mx-auto" onClick={scheduleReminder} id="schedulebutton">Schedule Reminder</button>
           {editingTask && (
-            <button type="button" className="btn btn-warning d-block mx-auto" onClick={updateTask}>
-              Update Task
-            </button>
-          )}</div>
+            <button type="button" className="btn btn-warning d-block mx-auto" onClick={updateTask}>Update Task</button>
+          )}
+        </div>
       </form>
       <audio id="notificationSound">
         <source src="notification_ding.mp3" type="audio/mpeg" />
@@ -226,5 +196,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
