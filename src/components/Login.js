@@ -12,7 +12,7 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const res = await axios.post("https://mernbackendproject-5stk.onrender.com/", { email, password });
+            const res = await axios.post("https://mern-todo-backend-1-87ds.onrender.com/", { email, password });
 
             if (res.data === "exist") {
                 navigate("/task", { state: { id: email } });
@@ -44,8 +44,8 @@ export default function Login() {
             </form>
             <div className="row mt-3">
                 <div className="col-12 d-flex justify-content-center">
-                    <label className="col-form-label me-2">Not a member?</label>
-                    <Link to="/signup" className=" mt-1">Signup Now</Link>
+                    <label className="col-form-label me-2"><b><i>Don't have an account?</i></b></label>
+                    <Link to="/signup" className=" mt-1"><i>Signup Now</i></Link>
                 </div>
             </div>
         </div>

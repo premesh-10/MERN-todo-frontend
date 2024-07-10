@@ -1,43 +1,88 @@
-#body{
-    overflow-x: hidden;
-}
-#form{
-    width: 40%;
-    padding: 10px;
-}
-#lable{
-    text-align: left;
-}
-table{
-    text-align: center;
-}
-#navbarNav{
-    position: relative;
-    left: 800px;
-    
-}
+/* Home.css */
 
-#topbtn{
-    margin-right: 40px;
-    font-size: larger;
-}
-
-#img{
-    width: 15px;
-    height: 15px;
-}
-/* Add this CSS to your stylesheet */
-.hover-data {
-    
+#body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding-top: 3rem;
+  }
+  
+  #form {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #label {
+    margin-top: 1rem;
+  }
+  
+  #input {
+    margin-bottom: 1rem;
+  }
+  
+  #schedulebutton {
+    background-color: #ffc107;
+    border: none;
+    color: #212529;
+  }
+  
+  #schedulebutton:hover {
+    background-color: #e0a800;
+  }
+  
+  #topbtn {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  #topbtn:hover {
+    color: #212529;
+  }
+  
+  .hover-data {
     position: absolute;
-     top: 100%; 
-    left: -30px;
-    right: 20px;
-     background-color: #fff; 
-     border: 1px solid #ccc; 
-     padding: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /*Optional shadow for better visibility*/
-    z-index: 1000;  /*Ensure it is above other elements*/
-    width: 450px;
+    background: #ffffff;
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  #img {
+    width: 20px;
+    height: 20px;
+    margin-left: 0.5rem;
+  }
+  
+  .table {
+    margin-top: 2rem;
+  }
+  
+  .table thead {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .table th,
+  .table td {
+    vertical-align: middle;
+  }
+  
+  audio {
+    display: none;
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .nav-item + .nav-item {
+    margin-left: 1rem;
   }
   

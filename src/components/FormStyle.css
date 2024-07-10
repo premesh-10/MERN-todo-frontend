@@ -4,7 +4,7 @@
 /* Login.css */
 
 .login {
-    background-image: url('./background1.png'); /* Adjust path to your image */
+    background-image: url('./background1.jpg'); /* Adjust path to your image */
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full viewport height */
@@ -27,7 +27,7 @@
 /* Signup.css */
 
 .signup {
-    background-image: url('./background1.png'); /* Adjust path to your image */
+    background-image: url('./background1.jpg'); /* Adjust path to your image */
     background-size: cover;
     background-position: center;
     height: 100vh; /* Adjust height as needed */

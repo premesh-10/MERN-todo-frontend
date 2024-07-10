@@ -11,7 +11,7 @@ export default function Signup() {
         e.preventDefault();
 
         try {
-            const res = await axios.post("https://mernbackendproject-5stk.onrender.com/signup", {
+            const res = await axios.post("https://mern-todo-backend-1-87ds.onrender.com/signup", {
                 email, password
             });
 
@@ -47,8 +47,8 @@ export default function Signup() {
             </form>
             <div className="row mt-3">
                 <div className="col-12 d-flex justify-content-center">
-                    <label className="col-form-label me-2">Already a member?</label>
-                    <Link to="/" className=" mt-1">login Now</Link>
+                    <label className="col-form-label me-2"><b><i>Existing user?</i></b></label>
+                    <Link to="/" className=" mt-1"><i>login Now</i></Link>
                 </div>
             </div>
         </div>
